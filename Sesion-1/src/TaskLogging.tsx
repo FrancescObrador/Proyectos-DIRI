@@ -8,8 +8,9 @@ const TaskLogging = () => {
   return (
     <div className="notificationsFrame">
       <div className="panel">
-       <Header></Header> 
+       <Header title="Registro de tareas"></Header> 
        <Content></Content> 
+       <Header title="Perfil"></Header>
       </div>
     </div>
   );

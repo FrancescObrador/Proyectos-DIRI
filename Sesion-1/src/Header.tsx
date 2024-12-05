@@ -1,5 +1,9 @@
 
-const Header = () => {
+interface HeaderProps {
+  title: string
+}
+
+const Header = ({title}: HeaderProps) => {
     return (
         <div className="header">
           <div className="menuIcon">
@@ -7,7 +11,7 @@ const Header = () => {
             <div className="dashBottom"></div>
             <div className="circle"></div>
           </div>
-          <h1>Registro de Tareas</h1>
+          <h2>{title}</h2>
           <input
             type="text"
             className="searchInput"
