@@ -5,8 +5,8 @@ import Button from './Components/Button'
 import ClockList from './Components/ClockList'
 
 function App() {
-  
-  
+
+
   const getLaps = (): string[] => {
     const saved = localStorage.getItem('laps');
     return saved ? JSON.parse(saved) : [];
@@ -28,11 +28,17 @@ function App() {
     setLaps([...laps, newLap]);
   }
 
+  const removeLap = (toRemoveLap: string) => {
+    let newLaps = [...laps];
+    newLaps = newLaps.filter(lap => lap != toRemoveLap )
+    setLaps([...newLaps]);
+  }
+
   return (
     <>
       <Clock></Clock>
       <Button onClick={ addLap }></Button>
-      <ClockList laps={laps}></ClockList>
+      <ClockList laps={laps} removeLap={removeLap}></ClockList>
     </>
   )
 }
