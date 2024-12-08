@@ -4,10 +4,9 @@ interface ButtonProps{
 }
 
 function Button ({onClick}: ButtonProps){
-
     return (
         <>
-        <button className="button" onClick={onClick}>vuelta</button>
+        <button onClick={onClick}>vuelta</button>
         </>
     )
 }
