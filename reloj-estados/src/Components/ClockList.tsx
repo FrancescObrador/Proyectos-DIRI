@@ -1,26 +1,28 @@
-import { useState } from "react";
-import Button from "./Button";
+interface Lap {
+    id: string
+    value: string
+}
 
 interface LapProps{
-    laps: string[]
-    removeLap: (lap: string) => void
+    laps: Lap[]
+    removeLap: (lapId: string) => void
 }
 
 function ClockList({laps, removeLap}: LapProps) {
 
     return (
-    <>
-        <ul >
+    <div className="clock-list">
+        <ul>
         {
             laps.map((lap) => {
-                return <li className="" key={lap}>
-                    {lap}
-                    <button onClick={() => removeLap(lap)}>X</button>
+                return <li className="clock-list-item" key={lap.id}>
+                    {lap.value}
+                    <button className="minimal-button" onClick={() => removeLap(lap.id)}>X</button>
                     </li>
             })
         }
         </ul>
-    </>
+    </div>
     )
 }
 
