@@ -7,16 +7,18 @@ import Detalle from './Detalle';
 
 const filmsViewModel = new FilmsListViewModel();
 
-const Lista = ({name}: any) => {
+const Lista = ({defaultFilmTitle}: any) => {
   const {films, addFilm, removeFilm} = useFilmsListViewModel(filmsViewModel);
 
-  let emptyFilm = films.find(film => film.title === name) || {title: '', year: 0, director: '', genre: ''};;
+  //filter by defaultFilmTitle or set an empty film
+  let emptyFilm = films.find(film => film.title === defaultFilmTitle) || {title: '', year: 0, director: '', genre: ''};;
 
   const [selectedFilm, setSelectedFilm] = useState<Film>();
   const [newFilm, setNewFilm] = useState<Film>(emptyFilm);
   
   return (
     <>
+    {/* items list */}
     <ul>
       {films.map(film => (
         <li key={film.title}>
@@ -27,6 +29,7 @@ const Lista = ({name}: any) => {
       ))}
     </ul>
     
+    {/* select film info to show */}
     <Detalle {...selectedFilm}></Detalle>
     </>
   )
