@@ -12,12 +12,11 @@ export class FilmsListViewModel{
     }
 
     public getFilms(): Film[]{
-        console.log(this.films.length);
         return this.films;
     }
 
     public addFilm(film: Film): void {
-        this.films.push(film);
+        this.films = [...this.films, film];
         this.notifyChange();
     }
 
@@ -34,6 +33,7 @@ export class FilmsListViewModel{
     }
 
     private notifyChange(){
+        console.log("notificando!")
         this.subscribers.forEach(subscriber => subscriber());
     }
 }
