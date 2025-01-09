@@ -1,0 +1,85 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #333;
+}
+
+h1 {
+  color: #4a90e2;
+  margin-bottom: 1rem;
+}
+
+.enrolForm {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.enrolForm label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.enrolForm input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.enrolForm input[type="submit"] {
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.enrolForm input[type="submit"]:hover {
+  background: #357ab8;
+}
+
+.message {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #4caf50;
+}
+
+.programs {
+  margin-bottom: 2rem;
+}
+
+.ulEnrol {
+  list-style: none;
+  padding: 0;
+}
+
+.parentLabels {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.radioSel {
+  margin-left: 1rem;
+}
+
+.enrolList {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
