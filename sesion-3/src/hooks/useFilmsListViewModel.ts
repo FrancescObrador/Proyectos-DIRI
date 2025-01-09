@@ -12,6 +12,7 @@ export const useFilmsListViewModel = (viewModel: FilmsListViewModel) => {
         });
         return () => unsubscribe();
     }, [viewModel]);
+    
     return {
         films,
         addFilm: (film: Film) => viewModel.addFilm(film),
