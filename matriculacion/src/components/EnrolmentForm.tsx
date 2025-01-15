@@ -1,11 +1,5 @@
-import React, { FormEvent, useEffect, useRef, useState } from 'react'
-
-export interface Student {
-    id?: string;
-    firstName: string;
-    lastName: string;
-    program: string;
-}
+import { FormEvent, useEffect, useRef, useState } from 'react'
+import { Student } from '../interfaces/Student';
 
 interface EnrolmentFormProps {
     chosenProgram: string;

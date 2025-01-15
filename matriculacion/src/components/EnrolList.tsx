@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import {DetailsList, SelectionMode} from "@fluentui/react/lib/DetailsList";
 import { initializeIcons } from '@fluentui/react/lib/Icons';
-import { Student } from './EnrolmentForm';
+import { Student } from '../interfaces/Student';
 import {v4 as uuidv4} from 'uuid';
 import {MdEdit, MdDelete} from 'react-icons/md'
 
 initializeIcons();
-
 
 
 interface EnrolListProps {
