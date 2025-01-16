@@ -11,6 +11,7 @@ initializeIcons();
 
 interface EnrolListProps {
     student?: Student;
+    students: Student[];
     onStudentRemoved: (student: Student) => void;
     onStudentEditing: (student: Student) => void;
 }
@@ -74,7 +75,7 @@ function EnrolList(props: EnrolListProps) {
 
   return (
     <div className='enrolList'>
-        <DetailsList selectionMode={SelectionMode.none} items={items} columns={columns}/>
+        <DetailsList selectionMode={SelectionMode.none} items={props.students} columns={columns}/>
     </div>
   )
 }

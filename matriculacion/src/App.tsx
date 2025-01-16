@@ -1,7 +1,12 @@
 import { ChangeEvent, useState } from 'react'
 import './App.css'
-import EnrolmentForm, { Student } from './components/EnrolmentForm'
+import { Student } from './interfaces/Student';
+import EnrolmentForm from './components/EnrolmentForm'
 import EnrolList from './components/EnrolList';
+import { EnrolViewModel } from './viewmodels/EnrolViewModel';
+import { useEnrolViewModel } from './hooks/useEnrolViewModel';
+
+const enrolViewModel = new EnrolViewModel();
 
 function App() {
   const [program, setProgram] = useState("UG");
@@ -10,6 +15,9 @@ function App() {
   const [pgEnrolments, setPGEnrolments] = useState(0);
   const [student, setStudent] = useState<Student>();
   const [editingStudent, setEditingStudent] = useState<Student>();
+
+  // use ViewModel
+  const {students} = useEnrolViewModel(enrolViewModel);
 
   const handleChangeEnrolments = (updateEnrolments: number) => {
   program == "UG" ? setUGEnrolments(updateEnrolments) : setPGEnrolments(updateEnrolments); };
@@ -50,7 +58,7 @@ function App() {
           </ul>
         </div>
       <EnrolmentForm chosenProgram={program} onChangeEnrolments={handleChangeEnrolments} currentEnrolments={selectedEnrolments()} onStudentChanged={handleChangeStudent} editingStudent={editingStudent}/>
-      <EnrolList student={student} onStudentRemoved={handleStudentRemoved} onStudentEditing={setEditingStudent}/>
+      <EnrolList students={students} student={student} onStudentRemoved={handleStudentRemoved} onStudentEditing={setEditingStudent}/>
     </div>
   )
 
