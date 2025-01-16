@@ -1,13 +1,19 @@
 import { Student } from "../interfaces/Student";
+import { getStudentsFromModel } from "../models/StudentModel";
 
 
 export class EnrolViewModel {
-    private students: Student[] = [];
     private subscribers: Array<Function> = [];
+    
+    private students: Student[] = [];
+    private program: string = "UG";
+    private ugEnrolments: number = 0;
+    private pgEnrolments: number = 0;
+    
 
     constructor(){
         this.notifyChange();
-        this.students = [...this.students, {id: "aa", firstName:"David", lastName:"Rizo", program:"UG" }]
+        this.students = getStudentsFromModel();
     }
 
     /// Generic VM
@@ -29,7 +35,7 @@ export class EnrolViewModel {
     }
 
     public getStudent(id: string): Student | undefined {
-        return this.students.find(s => s.id == id);
+        return this.students.find(s => s.id === id);
     }
 
     public addStudent(student: Student): void {
@@ -38,8 +44,41 @@ export class EnrolViewModel {
     }
 
     public removeStudent(student: Student): void {
-        this.students = this.students.filter(s => s.id != student.id)
+        this.students = this.students.filter(s => s.id !== student.id)
         this.notifyChange();
     }
 
+    public updateStudent(updatedStudent: Student): void {
+        this.students = this.students.map(student =>
+            student.id === updatedStudent.id ? updatedStudent : student
+        );
+        this.notifyChange();
+    }
+
+    public getProgram(): string {
+        return this.program;
+    }
+
+    public setProgram(program: string): void {
+        this.program = program;
+        this.notifyChange();
+    }
+
+    public getUgEnrolments(): number {
+        return this.ugEnrolments;
+    }
+
+    public setUgEnrolments(value: number): void {
+        this.ugEnrolments = value;
+        this.notifyChange();
+    }
+
+    public getPgEnrolments(): number {
+        return this.pgEnrolments;
+    }
+
+    public setPgEnrolments(value: number): void {
+        this.pgEnrolments = value;
+        this.notifyChange();
+    }
 }

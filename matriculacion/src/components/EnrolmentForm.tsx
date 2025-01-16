@@ -7,6 +7,9 @@ interface EnrolmentFormProps {
     editingStudent?: Student;
     onChangeEnrolments: (updateEnrolments: number)=> void;
     onStudentChanged: (student: Student) => void;
+    
+    //VM
+    addStudent: (student: Student) => void;
 }
 
 function EnrolmentForm(props: EnrolmentFormProps) {
@@ -35,6 +38,7 @@ function EnrolmentForm(props: EnrolmentFormProps) {
                 program: props.chosenProgram
             };
     
+            props.addStudent(student);
             props.onStudentChanged(student);
         }
 

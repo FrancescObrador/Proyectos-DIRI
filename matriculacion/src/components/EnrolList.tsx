@@ -14,6 +14,10 @@ interface EnrolListProps {
     students: Student[];
     onStudentRemoved: (student: Student) => void;
     onStudentEditing: (student: Student) => void;
+
+    // VM
+    removeStudent: (student: Student) => void;
+    updateStudent: (student: Student) => void;
 }
 
 function EnrolList(props: EnrolListProps) {
@@ -66,10 +70,17 @@ function EnrolList(props: EnrolListProps) {
 
     const handleDelete = (item: Student) => {
         setItems(items.filter(i => i.id !== item.id))
+        
+        //VM
+        props.removeStudent(item);
+        
         props.onStudentRemoved(item);
     }
 
     const handleEdit = (item: Student) => {
+        //VM
+        props.updateStudent(item);
+
         props.onStudentEditing(item);
     }
 
