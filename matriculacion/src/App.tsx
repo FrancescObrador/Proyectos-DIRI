@@ -1,10 +1,12 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, Suspense, useState } from 'react'
 import './App.css'
 import { Student } from './interfaces/Student';
 import EnrolmentForm from './components/EnrolmentForm'
-import EnrolList from './components/EnrolList';
 import { EnrolViewModel } from './viewmodels/EnrolViewModel';
 import { useEnrolViewModel } from './hooks/useEnrolViewModel';
+import React from 'react';
+
+const EnrolList = React.lazy(() => import('./components/EnrolList'));
 
 const enrolViewModel = new EnrolViewModel();
 
@@ -64,9 +66,11 @@ function App() {
       onChangeEnrolments={handleChangeEnrolments} onStudentChanged={handleChangeStudent}  
       currentEnrolments={selectedEnrolments()} editingStudent={editingStudent}/>
       
-      <EnrolList students={students} student={student} 
-      onStudentRemoved={handleStudentRemoved} onStudentEditing={setEditingStudent}
-      removeStudent={removeStudent} updateStudent={updateStudent}/>
+      <Suspense fallback={<div>Cargando...</div>}>
+        <EnrolList students={students} student={student} 
+        onStudentRemoved={handleStudentRemoved} onStudentEditing={setEditingStudent}
+        removeStudent={removeStudent} updateStudent={updateStudent}/>
+      </Suspense>
     </div>
   )
 

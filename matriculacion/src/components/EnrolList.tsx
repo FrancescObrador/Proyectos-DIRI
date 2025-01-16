@@ -49,15 +49,17 @@ function EnrolList(props: EnrolListProps) {
             const currentID = props.student.id; 
             if (currentID == undefined) {
                 const student: Student = { ...props.student, id: uuidv4() };
-                setItems([...items, student]); 
+                //setItems([...items, student]); 
+                //Todo addStudents
             } 
             else {
-                const studentIndex = items.findIndex(item => item.id === props.student!.id); 
-                
+                //const studentIndex = items.findIndex(item => item.id === props.student!.id); 
+                const studentIndex = props.students.findIndex(student => student.id === props.student!.id)
                 if (studentIndex !== -1) {
-                    const updatedItems = [...items];
-                    updatedItems[studentIndex] = { ...props.student };
-                    setItems(updatedItems);
+                    //const updatedItems = [...items];
+                    //updatedItems[studentIndex] = { ...props.student };
+                    //setItems(updatedItems);
+                    props.updateStudent(props.student);
                 } 
                 else {
                     console.log("No encontramos el estudiante con ID " + studentIndex);
@@ -66,10 +68,10 @@ function EnrolList(props: EnrolListProps) {
         }
     }, [props.student])
 
-    const [items, setItems] = useState<Student[]>([]);
+    //const [items, setItems] = useState<Student[]>([]);
 
     const handleDelete = (item: Student) => {
-        setItems(items.filter(i => i.id !== item.id))
+        //setItems(items.filter(i => i.id !== item.id))
         
         //VM
         props.removeStudent(item);
