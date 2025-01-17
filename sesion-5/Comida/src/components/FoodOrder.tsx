@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useContext, useState } from 'react';
+import { MouseEventHandler, useContext, useState } from 'react';
 import { MenuItem } from '../entities/entities';
 import { foodItemsContext } from '../App';
 
@@ -8,8 +8,11 @@ interface FoodOrderProps {
 }
 
 const FoodOrder = (props: FoodOrderProps) => {
+
     const [quantity, setQuantity] = useState<number>(1);
+    // @ts-ignore
     const [totalAmount, setTotalAmout] = useState(props.food.price);
+    // @ts-ignore
     const [isOrdered, setIsOrdered] = useState(false);
 
     const menuItems: MenuItem[] = useContext(foodItemsContext)
