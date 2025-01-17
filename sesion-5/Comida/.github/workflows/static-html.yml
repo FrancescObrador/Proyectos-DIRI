@@ -1,0 +1,32 @@
+name: Deploy Static HTML
+
+on:
+  push:
+    branches:
+      - main  # Se ejecutará cuando haya un push en la rama `main`
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Usa el sistema operativo de GitHub Actions
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  # Obtiene el código fuente del repositorio
+
+      - name: Set up Node.js (si es necesario para tu proyecto)
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # O la versión que necesites
+
+      - name: Install dependencies (si es necesario)
+        run: npm install  # Si usas npm o yarn, instala las dependencias
+
+      - name: Build static files (si es necesario)
+        run: npm run build  # Comando para construir tus archivos HTML estáticos, si usas algo como un generador de sitios estáticos
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages  # Rama de GitHub Pages
+          folder: dist  # Carpeta donde se guardan los archivos generados (ajusta a la tuya)
+
