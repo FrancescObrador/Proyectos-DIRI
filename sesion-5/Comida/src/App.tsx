@@ -7,8 +7,7 @@ const Foods = React.lazy(() => import('./components/Foods'));
 
 function App() {
   
-  // @ts-ignore
-  const [menuItems, setMenuItems] = useState<MenuItem[]>([
+  const [menuItems] = useState<MenuItem[]>([
     {
       "id": 1,
       "name": "Hamburguesa de Pollo",
