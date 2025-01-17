@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   base: '/Proyectos-DIRI/sesion-5/Comida/', 
   build: {
-    outDir: 'docs' // Para Github Pages
+    outDir: 'docs', // Para Github Pages
+    copyPublicDir: true
   }
 })
