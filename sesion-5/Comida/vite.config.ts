@@ -7,6 +7,5 @@ export default defineConfig({
   base: '/Proyectos-DIRI/sesion-5/Comida/', 
   build: {
     outDir: 'docs', // Para Github Pages
-    copyPublicDir: true
   }
 })
